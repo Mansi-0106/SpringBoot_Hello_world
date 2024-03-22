@@ -33,22 +33,3 @@ pipeline {
     }
 }
 
-def waitForQualityGate() {
-    def scannerHome = tool 'sonar-scanner'
-    withSonarQubeEnv('SonarQube_Server_Name') {
-        script {
-            // Update SonarQube URL with correct scheme
-            def sonarURL = "http://localhost:9000"
-            if (!sonarURL.startsWith('http://') && !sonarURL.startsWith('https://')) {
-                sonarURL = "http://" + sonarURL
-            }
-            sh '''
-                ${scannerHome}/bin/sonar-scanner \
-                -Dsonar.projectKey=hello-world-git \
-                -Dsonar.sources=src \
-                -Dsonar.host.url=${sonarURL} \
-                -Dsonar.login=sqp_010d6c670e4cbe2dada76eac60239013bada5ce8
-            '''
-        }
-    }
-}
