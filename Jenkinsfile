@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Use 'withSonarQubeEnv' wrapper around SonarQube steps
-                    withSonarQubeEnv('SonarQube_Server') {
+                    withSonarQubeEnv('SonarQube') {
                         timeout(time: 1, unit: 'HOURS') {
                             script {
                                 def qg = waitForQualityGate()
