@@ -31,12 +31,6 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Archive artifacts, clean up or post-build tasks
-        }
-    }
 }
 
 def waitForQualityGate() {
